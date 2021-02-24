@@ -93,9 +93,13 @@ namespace Toolbox.Update
                 writer.Write(updateScript);
             }
 
-            Process.Start("explorer.exe", folder);
-
-            Process.Start("powershell.exe", update);
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = "powershell.exe",
+                Arguments = update,
+                CreateNoWindow = true,
+                WindowStyle = ProcessWindowStyle.Hidden,                
+            });
         }
 
         protected abstract Uri VersionsUri { get; }
