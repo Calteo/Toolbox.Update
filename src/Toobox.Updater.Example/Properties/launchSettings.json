@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Toobox.Updater.Example": {
+      "commandName": "Project",
+      "commandLineArgs": "\"arg1\" \"arg2\""
+    }
+  }
+}
