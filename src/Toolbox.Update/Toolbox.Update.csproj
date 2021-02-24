@@ -1,12 +1,26 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>1.0.1</Version>
+    <Authors>Calteo</Authors>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Copyright 2021 by Calteo</Copyright>
+    <Description>Allows automatic update (i.e from GitHub Release)</Description>
+    <PackageProjectUrl>https://github.com/Calteo/Toolbox.Update</PackageProjectUrl>
+    <AssemblyVersion>1.0.1.1</AssemblyVersion>
+    <FileVersion>1.0.1.1</FileVersion>
+    <PackageIcon>toolbox.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="AssetZip.ps1" />
     <None Remove="update.ps1" />
+    <None Include="Images\toolbox.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
