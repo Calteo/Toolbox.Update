@@ -51,8 +51,8 @@ namespace Toolbox.Update.Example
             // 
             // splitContainer.Panel2
             // 
-            this.splitContainer.Panel2.Controls.Add(this.buttonUpdate);
             this.splitContainer.Panel2.Controls.Add(this.textBoxVersions);
+            this.splitContainer.Panel2.Controls.Add(this.buttonUpdate);
             this.splitContainer.Size = new System.Drawing.Size(800, 450);
             this.splitContainer.SplitterDistance = 400;
             this.splitContainer.TabIndex = 0;
@@ -68,6 +68,7 @@ namespace Toolbox.Update.Example
             this.textBoxArgs.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textBoxArgs.Size = new System.Drawing.Size(400, 450);
             this.textBoxArgs.TabIndex = 0;
+            this.textBoxArgs.WordWrap = false;
             // 
             // buttonUpdate
             // 
@@ -89,8 +90,9 @@ namespace Toolbox.Update.Example
             this.textBoxVersions.Name = "textBoxVersions";
             this.textBoxVersions.ReadOnly = true;
             this.textBoxVersions.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxVersions.Size = new System.Drawing.Size(396, 450);
+            this.textBoxVersions.Size = new System.Drawing.Size(396, 411);
             this.textBoxVersions.TabIndex = 0;
+            this.textBoxVersions.WordWrap = false;
             // 
             // ExampleForm
             // 

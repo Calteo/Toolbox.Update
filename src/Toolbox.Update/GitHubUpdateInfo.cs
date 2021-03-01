@@ -1,7 +1,5 @@
-﻿using System.Linq;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.IO;
-using System;
 
 namespace Toolbox.Update
 {
@@ -36,7 +34,8 @@ namespace Toolbox.Update
                             Assets.Add(new AssetZip(name, uri));
                             break;
                         default:
-                            throw new NotImplementedException($"Asset '{name}' can not be processes.");
+                            Assets.Add(new AssetFile(name, uri));
+                            break;
                     }
                 }
             }            

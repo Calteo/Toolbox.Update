@@ -10,7 +10,7 @@ namespace Toolbox.Update.Example
         {
             InitializeComponent();
 
-            Updater = new GitHubUpdater("Calteo", "Image.Import");
+            Updater = new GitHubUpdater("Calteo", "Toolbox.Update");
         }
 
         private GitHubUpdater Updater { get; }
@@ -28,6 +28,10 @@ namespace Toolbox.Update.Example
             foreach (var version in Updater.GetVersions())
             {
                 textBoxVersions.Text += $"{version.Version} - {version.Name} - {version.Published}" + Environment.NewLine;
+                foreach (var asset in version.Assets)
+                {
+                    textBoxVersions.Text += $"  {asset.Name} - {asset.GetType().Name} - {asset.Uri}" + Environment.NewLine;
+                }
             }
         }
 
