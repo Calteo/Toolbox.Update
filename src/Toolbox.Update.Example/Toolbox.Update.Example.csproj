@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Version>1.0.1</Version>
+    <Authors>Calteo</Authors>
+    <Company>Calteo</Company>
+    <Product>Toolbox.Update</Product>
+    <Description>Sample application to test the update component</Description>
+    <Copyright>Calteo</Copyright>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <FileVersion>1.0.2.0</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Toolbox.Update\Toolbox.Update.csproj" />
+  </ItemGroup>
+
+</Project>

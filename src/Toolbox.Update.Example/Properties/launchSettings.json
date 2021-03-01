@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Toolbox.Update.Example": {
+      "commandName": "Project",
+      "commandLineArgs": "O:\\"
+    }
+  }
+}

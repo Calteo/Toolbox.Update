@@ -50,6 +50,7 @@ namespace Toolbox.Update
         public void Install(T version)
         {
             var folder = Path.Combine(Path.GetTempPath(), "updater." + Guid.NewGuid().ToString("D"));
+            Trace.WriteLine($"create folder '{folder}'", "Updater.Install");
             Directory.CreateDirectory(folder);
 
             var updateScript = typeof(Updater<>).GetResourceText("update.ps1");
@@ -69,6 +70,7 @@ namespace Toolbox.Update
 
             foreach (var asset in version.Assets.Where(a => a.Enabled))
             {
+                Trace.WriteLine($"download '{asset.Uri}'", "Updater.Install");
                 var request = WebRequest.CreateHttp(asset.Uri);
                 PrepareRequest(request);
                 var response = (HttpWebResponse)request.GetResponse();
@@ -88,11 +90,15 @@ namespace Toolbox.Update
             updateScript = updateScript.Replace("# @installers", installers.ToString());
 
             var update = Path.Combine(folder, "update.ps1");
+
+            Trace.WriteLine($"write '{update}'", "Updater.Install");
+
             using (var writer = new StreamWriter(update))
             {
                 writer.Write(updateScript);
             }
 
+            Trace.WriteLine($"start powershell", "Updater.Install");
             Process.Start(new ProcessStartInfo
             {
                 FileName = "powershell.exe",
