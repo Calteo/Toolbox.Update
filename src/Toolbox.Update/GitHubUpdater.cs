@@ -10,6 +10,11 @@ namespace Toolbox.Update
     /// </summary>
     public class GitHubUpdater : Updater<GitHubUpdateInfo>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GitHubUpdater"/> class.
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <param name="repository"></param>
         public GitHubUpdater(string owner, string repository)
         {
             Owner = owner;
@@ -26,8 +31,10 @@ namespace Toolbox.Update
         /// </summary>
         public string Repository { get; }
 
+        /// <inheritdoc>
         protected override Uri VersionsUri => new Uri($"https://api.github.com/repos/{Owner}/{Repository}/releases");
 
+        /// <inheritdoc>
         protected override void PrepareRequest(HttpWebRequest request)
         {
             base.PrepareRequest(request);
@@ -35,6 +42,7 @@ namespace Toolbox.Update
             request.Accept = "application/vnd.github.v3+json";
         }
 
+        /// <inheritdoc>
         protected override IEnumerable<UpdateInfo> ParseVersions(HttpWebResponse response) 
         {
             var document = JsonDocument.Parse(response.GetResponseStream());

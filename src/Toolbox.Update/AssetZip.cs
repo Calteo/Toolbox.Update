@@ -4,14 +4,23 @@ using System.IO.Compression;
 
 namespace Toolbox.Update
 {
+    /// <summary>
+    /// A zip file
+    /// </summary>
     public class AssetZip : Asset
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AssetZip"/> class.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="uri"></param>
         public AssetZip(string name, string uri) : base(name, uri)
         {            
         }
 
         private string ExtractFolder { get; set; }
 
+        /// <inheritdoc/>
         public override void Downloaded(string target)
         {
             base.Downloaded(target);
@@ -21,6 +30,7 @@ namespace Toolbox.Update
             ZipFile.ExtractToDirectory(target, ExtractFolder);
         }
 
+        /// <inheritdoc/>
         public override string GetInstallScript()
         {
             var script = typeof(AssetZip).GetResourceText("AssetZip.ps1");

@@ -2,11 +2,9 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Net;
-using System.Net.Security;
 using System.IO;
 using System.Text;
 using System.Diagnostics;
-using System.Reflection;
 
 namespace Toolbox.Update
 {
@@ -47,6 +45,10 @@ namespace Toolbox.Update
             return ParseVersions(response).OfType<T>().OrderByDescending(i => i.Published);
         }
 
+        /// <summary>
+        /// Installs the selected version.
+        /// </summary>
+        /// <param name="version"></param>
         public void Install(T version)
         {
             var folder = Path.Combine(Path.GetTempPath(), "updater." + Guid.NewGuid().ToString("D"));
@@ -108,13 +110,25 @@ namespace Toolbox.Update
             });
         }
 
+        /// <summary>
+        /// Gets the location where versions can be quiered.
+        /// </summary>
         protected abstract Uri VersionsUri { get; }
 
+        /// <summary>
+        /// Prepares a <see cref="HttpWebRequest"/> for the version storage.
+        /// </summary>
+        /// <param name="request"></param>
         protected virtual void PrepareRequest(HttpWebRequest request)
         {
             request.UserAgent = $"Calteo.Toolbox.Updater - {GetType().Assembly.GetName().Version}";
         }
 
+        /// <summary>
+        /// Parses the response from the <see cref="VersionsUri"/>.
+        /// </summary>
+        /// <param name="response"></param>
+        /// <returns></returns>
         protected abstract IEnumerable<UpdateInfo> ParseVersions(HttpWebResponse response);
     }
 }

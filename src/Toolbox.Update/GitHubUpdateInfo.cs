@@ -8,17 +8,21 @@ namespace Toolbox.Update
     /// </summary>
     public class GitHubUpdateInfo : UpdateInfo
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GitHubUpdateInfo"/> class.
+        /// </summary>
+        /// <param name="element"></param>
         public GitHubUpdateInfo(JsonElement element)
             :base(
                  element.GetProperty("name").GetString(),
                  element.GetProperty("tag_name").GetString(),
+                 element.GetProperty("body").GetString(),
                  element.GetProperty("published_at").GetDateTime(),
                  element.GetProperty("html_url").GetString()
                  )
         {
             var assetsElement = element.GetProperty("assets");
-            var assetElements = new JsonElement[assetsElement.GetArrayLength()];
-
+            
             using (var enumerator = assetsElement.EnumerateArray())
             {
                 while (enumerator.MoveNext())
